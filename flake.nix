@@ -16,9 +16,10 @@
 
         # shell to use when launching the shell, "default" will use your system's configured shell
         ROS_FLAKE_SHELL = "default";
+        ros_distro = pkgs.rosPackages.jazzy;
 
-        rosEnv = pkgs.rosPackages.jazzy.buildEnv {
-          paths = with pkgs.rosPackages.jazzy; [
+        rosEnv = ros_distro.buildEnv {
+          paths = with ros_distro; [
             ros-core
             ros2bag
             ament-cmake
