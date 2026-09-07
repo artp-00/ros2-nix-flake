@@ -1,6 +1,9 @@
 # https://github.com/lopsided98/nix-ros-overlay
 {
-  # WARNING: This flake is very heavy and takes a lot of time and a lot of RAM (20Gb) to evaluate itself.
+  # WARNING: This flake is very heavy and takes a lot of time and RAM (20Gb) to evaluate itself.
+  # This is why you have the option to use pre-compiled binary packages if you want
+  # (see README)
+
   inputs = {
     nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay/master";
     nixpkgs.follows = "nix-ros-overlay/nixpkgs";
@@ -15,7 +18,7 @@
         };
 
         # shell to use when launching the shell, "default" will use your system's configured shell
-        ROS_FLAKE_SHELL = "default";
+        ROS_FLAKE_SHELL = "zsh";
         ros_distro = pkgs.rosPackages.jazzy;
 
         rosEnv = ros_distro.buildEnv {
@@ -75,7 +78,16 @@
       });
 
   nixConfig = {
-    extra-substituters = [ "https://ros.cachix.org" ];
-    extra-trusted-public-keys = [ "ros.cachix.org-1:dSyZxI8geDCJrwgvCOHDoAfOm5sV1wCPjBkKL+38Rvo=" ];
+    extra-substituters = [
+      "https://cache.nixos.org/"
+      "https://ros.cachix.org"
+      "https://attic.iid.ciirc.cvut.cz/ros"
+    ];
+
+    extra-trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "ros.cachix.org-1:dSyZxI8geDCJrwgvCOHDoAfOm5sV1wCPjBkKL+38Rvo="
+      "ros:JR95vUYsShSqfA1VTYoFt1Nz6uXasm5QrcOsGry9f6Q="
+    ];
   };
 }
