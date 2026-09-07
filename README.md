@@ -18,6 +18,7 @@ colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
 Also note that ROS2 and its associated packages are very heavy and will take a (very) long time to compile (took me a few hours).
 To partially resolve this you can instead use pre packaged binaries.
+
 To do this add this to your `nix.conf`:
 
 ```
