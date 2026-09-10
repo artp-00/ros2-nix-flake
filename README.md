@@ -31,7 +31,7 @@ nix.settings.substituters = [
         "https://attic.iid.ciirc.cvut.cz/ros"
       ];
 
-      trusted-public-keys = [
+nix.settings.trusted-public-keys = [
         "ros.cachix.org-1:dSyZxI8geDCJrwgvCOHDoAfOm5sV1wCPjBkKL+38Rvo="
         "ros:JR95vUYsShSqfA1VTYoFt1Nz6uXasm5QrcOsGry9f6Q="
       ];
