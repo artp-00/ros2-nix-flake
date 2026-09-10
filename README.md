@@ -11,12 +11,7 @@ nix develop
 
 # Notes
 
-If you want your lsp to work you need to generate `compile_commands.json` with:
-```bash
-colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-```
-
-Also note that ROS2 and its associated packages are very heavy and will take a (very) long time to compile (took me a few hours).
+ROS2 and its associated packages are very heavy and will take a (very) long time to compile (took me a few hours).
 To partially resolve this you can instead use pre packaged binaries.
 
 To do this add this to your `nix.conf`:
@@ -42,9 +37,14 @@ nix.settings.substituters = [
       ];
 ```
 
-Also dont forget to add yourself to trusted nix users.
+Do not forget to add yourself to trusted nix users.
 
 I also suggest adding packages one by one as you go instead of compiling everything all at once.
+
+If you want your lsp to work you need to generate `compile_commands.json` with:
+```bash
+colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+```
 
 # References
 - https://github.com/lopsided98/nix-ros-overlay
